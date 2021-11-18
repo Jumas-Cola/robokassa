@@ -169,7 +169,8 @@ class Payment
         $password = $this->{$passwordType . 'Password'};
 
         $signature = '';
-        if ($this->data['OutSumCurrency']) {
+        if (array_key_exists('OutSumCurrency', $this->data) and 
+            $this->data['OutSumCurrency']) {
             $signature = vsprintf('%s:%u:%s:%s', [
                 $data['OutSum'],
                 $data['InvId'],
